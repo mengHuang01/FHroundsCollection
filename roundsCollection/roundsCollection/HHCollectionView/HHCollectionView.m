@@ -11,15 +11,28 @@
 
 @interface HHCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate>
 
-
+/**
+ *  collectionView
+ */
 @property (nonatomic, weak) UICollectionView *collectionView;
-
+/**
+ *  pageControl
+ */
 @property (nonatomic, weak) UIPageControl *pageControl;
-
+/**
+ *  flowLayout 流水布局
+ */
 @property (nonatomic, weak) UICollectionViewFlowLayout *flowLayout;
 
+/**
+ *  图片的角标
+ */
 @property (nonatomic, assign) NSInteger imgIndex;
 
+
+/**
+ *  定时器
+ */
 @property (nonatomic, strong) NSTimer *timer;
 
 
@@ -29,6 +42,14 @@
 
 @implementation HHCollectionView
 
+#pragma mark- timer 操作
+
+/**
+ *  懒加载定时器
+ *
+ *  @return timer
+ */
+
 - (NSTimer *)timer
 {
     if (!_timer) {
@@ -37,18 +58,24 @@
     }
     return _timer;
 }
-
+/**
+ *  开启定时器
+ */
 - (void)starTimer
 {
     [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
-
+/**
+ *  关闭定时器
+ */
 - (void)stopTimer
 {
     [self.timer invalidate];
     self.timer = nil;
 }
-
+/**
+ *  定时器 执行方法
+ */
 - (void)timerAction
 {
     
@@ -72,13 +99,13 @@
 {
     
     NSInteger index =( indexPath.item - 1 + self.imgIndex + self.images.count) % self.images.count;
-
+    
     HHCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
-    
+    cell.dataTapy = self.dataTapy;
     cell.img = self.images[index];
     
-    NSLog(@"%ld  %ld", indexPath.item, self.imgIndex);
+    
     
     return cell;
     
@@ -87,23 +114,17 @@
 
 #pragma mark- UIScrollViewDelegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-
-}
 
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     NSInteger sizeOf = scrollView.contentOffset.x / scrollView.bounds.size.width  - 1;
+
     
-  
-    
-    NSLog(@"%ld", sizeOf);
+//    NSLog(@"%ld", sizeOf);
     if (sizeOf == 0) {
         return;
     }
-    
     
     self.imgIndex =  ( self.imgIndex + sizeOf + self.images.count ) % self.images.count;
     
@@ -114,12 +135,18 @@
     });
     
 }
-
+/**
+ *  手动滑动停止定时器
+ *
+ */
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self stopTimer];
 }
-
+/**
+ *  滑动停止定时器
+ *
+ */
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     [self starTimer];
@@ -129,9 +156,7 @@
 {
     NSInteger sizeOf = scrollView.contentOffset.x / scrollView.bounds.size.width  - 1;
     
-    
-    
-    NSLog(@"%ld", sizeOf);
+//    NSLog(@"%ld", sizeOf);
     if (sizeOf == 0) {
         return;
     }
@@ -156,6 +181,14 @@
     _images = images;
     
     [self setCollectionUI];
+    
+    [self fistTiem];
+
+    
+    [self starTimer];
+    
+    [self.collectionView reloadData];
+
     
 }
 
@@ -198,6 +231,7 @@
       
         [self addSubview:collectionView];
         _collectionView = collectionView;
+        
         _flowLayout = flowLayout;
         
         UIPageControl *pageControl = [[UIPageControl alloc]init];
@@ -206,6 +240,7 @@
         _pageControl = pageControl;
         
         [_collectionView registerNib:[UINib nibWithNibName:@"HHCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"cell"];
+        
         
     }
     return self;
@@ -220,33 +255,34 @@
 {
     [super layoutSubviews];
     
-    self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
-    NSArray *collectH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(num)-[view]-(num)-|" options:NSLayoutFormatAlignAllTop metrics:@{@"num":@0} views:@{@"view":self.collectionView}];
+//    self.collectionView.frame = self.bounds;
     
-    NSArray *collectV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(num)-[view]-(num)-|" options:NSLayoutFormatAlignAllBottom metrics:@{@"num":@0} views:@{@"view":self.collectionView}];
+    self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+#warning  报警告"negative or zero item sizes are not supported in the flow layout" 待解决
+    NSArray *collectH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(num)-[view]-(num)-|" options:NSLayoutFormatAlignmentMask metrics:@{@"num":@0} views:@{@"view":self.collectionView}];
+    
+    NSArray *collectV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(num)-[view]-(num)-|" options:(NSLayoutFormatAlignmentMask) metrics:@{@"num":@0} views:@{@"view":self.collectionView}];
+    
+    
     
     [self addConstraints:collectH];
     [self addConstraints:collectV];
     
-                         
+    
     self.pageControl.translatesAutoresizingMaskIntoConstraints = NO;
     
-    NSArray *pageH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(num)-[view]-(num)-|" options:NSLayoutFormatAlignAllBottom metrics:@{@"num":@0} views:@{@"view":self.pageControl}];
-    NSArray *pageV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(30)]-(num)-|" options:NSLayoutFormatAlignAllBottom metrics:@{@"num":@20} views:@{@"view":self.pageControl}];
+    NSArray *pageH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(num)-[view]-(num)-|" options:NSLayoutFormatAlignmentMask metrics:@{@"num":@0} views:@{@"view":self.pageControl}];
+    
+    NSArray *pageV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(30)]-(num)-|" options:NSLayoutFormatAlignmentMask metrics:@{@"num":@20} views:@{@"view":self.pageControl}];
+    
     [self addConstraints:pageH];
     [self addConstraints:pageV];
     
     self.flowLayout.itemSize = self.collectionView.bounds.size;
 
-    [self fistTiem];
-    
-    [self starTimer];
-    
-    
-    
     
 }
-
 
 
 

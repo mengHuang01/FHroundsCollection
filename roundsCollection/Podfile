@@ -1,0 +1,14 @@
+ platform :ios, '8.0'
+
+target 'roundsCollection' do
+
+
+
+pod 'SDWebImage'
+
+pod 'AFNetworking'
+
+pod 'YYModel'
+
+
+end

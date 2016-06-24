@@ -11,6 +11,12 @@
 @interface HHCollectionCell : UICollectionViewCell
 
 
+
 @property (nonatomic, copy) NSString *img;
+
+
+@property (nonatomic, assign) BOOL dataTapy;
+
+
 
 @end

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6D67D940270515C87B80702 /* libPods-roundsCollection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5D2591106425CA9F131787 /* libPods-roundsCollection.a */; };
+		AC1DD2461D1CC05A007AE636 /* HHCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1DD2451D1CC05A007AE636 /* HHCollectionViewController.m */; };
+		AC1DD2601D1CCAC0007AE636 /* HHNetTools.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1DD25F1D1CCAC0007AE636 /* HHNetTools.m */; };
+		AC1DD2961D1CCE2F007AE636 /* HHImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1DD2951D1CCE2F007AE636 /* HHImageModel.m */; };
 		AC703F531D1C106800DFEBB3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC703F521D1C106800DFEBB3 /* main.m */; };
 		AC703F561D1C106800DFEBB3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC703F551D1C106800DFEBB3 /* AppDelegate.m */; };
 		AC703F591D1C106800DFEBB3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC703F581D1C106800DFEBB3 /* ViewController.m */; };
@@ -19,6 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4787E5F171D5276930A4D09D /* Pods-roundsCollection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roundsCollection.debug.xcconfig"; path = "Pods/Target Support Files/Pods-roundsCollection/Pods-roundsCollection.debug.xcconfig"; sourceTree = "<group>"; };
+		88F9063E6F82B8287A743196 /* Pods-roundsCollection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roundsCollection.release.xcconfig"; path = "Pods/Target Support Files/Pods-roundsCollection/Pods-roundsCollection.release.xcconfig"; sourceTree = "<group>"; };
+		AC1DD2441D1CC05A007AE636 /* HHCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHCollectionViewController.h; sourceTree = "<group>"; };
+		AC1DD2451D1CC05A007AE636 /* HHCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHCollectionViewController.m; sourceTree = "<group>"; };
+		AC1DD25E1D1CCAC0007AE636 /* HHNetTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHNetTools.h; sourceTree = "<group>"; };
+		AC1DD25F1D1CCAC0007AE636 /* HHNetTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHNetTools.m; sourceTree = "<group>"; };
+		AC1DD2941D1CCE2F007AE636 /* HHImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHImageModel.h; sourceTree = "<group>"; };
+		AC1DD2951D1CCE2F007AE636 /* HHImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHImageModel.m; sourceTree = "<group>"; };
 		AC703F4E1D1C106800DFEBB3 /* roundsCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = roundsCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC703F521D1C106800DFEBB3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC703F541D1C106800DFEBB3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -34,6 +46,7 @@
 		AC703F6B1D1C121500DFEBB3 /* HHCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHCollectionCell.xib; sourceTree = "<group>"; };
 		AC703F6C1D1C121500DFEBB3 /* HHCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHCollectionView.h; sourceTree = "<group>"; };
 		AC703F6D1D1C121500DFEBB3 /* HHCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHCollectionView.m; sourceTree = "<group>"; };
+		FD5D2591106425CA9F131787 /* libPods-roundsCollection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-roundsCollection.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +54,75 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6D67D940270515C87B80702 /* libPods-roundsCollection.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		64BCA5180ACA5449EED1D4D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FD5D2591106425CA9F131787 /* libPods-roundsCollection.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		66D0FF92D74587BE586B2826 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4787E5F171D5276930A4D09D /* Pods-roundsCollection.debug.xcconfig */,
+				88F9063E6F82B8287A743196 /* Pods-roundsCollection.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AC1DD2431D1CBFA2007AE636 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				AC1DD2481D1CC9F1007AE636 /* Controller */,
+				AC1DD2471D1CC9E2007AE636 /* Model */,
+				AC1DD25D1D1CCA8B007AE636 /* Common */,
+			);
+			name = Class;
+			path = HHCollectionView;
+			sourceTree = "<group>";
+		};
+		AC1DD2471D1CC9E2007AE636 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC1DD2941D1CCE2F007AE636 /* HHImageModel.h */,
+				AC1DD2951D1CCE2F007AE636 /* HHImageModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		AC1DD2481D1CC9F1007AE636 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AC1DD2441D1CC05A007AE636 /* HHCollectionViewController.h */,
+				AC1DD2451D1CC05A007AE636 /* HHCollectionViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		AC1DD25D1D1CCA8B007AE636 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AC1DD25E1D1CCAC0007AE636 /* HHNetTools.h */,
+				AC1DD25F1D1CCAC0007AE636 /* HHNetTools.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		AC703F451D1C106800DFEBB3 = {
 			isa = PBXGroup;
 			children = (
 				AC703F501D1C106800DFEBB3 /* roundsCollection */,
 				AC703F4F1D1C106800DFEBB3 /* Products */,
+				66D0FF92D74587BE586B2826 /* Pods */,
+				64BCA5180ACA5449EED1D4D3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +140,7 @@
 				AC703F541D1C106800DFEBB3 /* AppDelegate.h */,
 				AC703F551D1C106800DFEBB3 /* AppDelegate.m */,
 				AC703F681D1C121500DFEBB3 /* HHCollectionView */,
+				AC1DD2431D1CBFA2007AE636 /* Class */,
 				AC703F571D1C106800DFEBB3 /* ViewController.h */,
 				AC703F581D1C106800DFEBB3 /* ViewController.m */,
 				AC703F5A1D1C106800DFEBB3 /* Main.storyboard */,
@@ -107,9 +179,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC703F651D1C106800DFEBB3 /* Build configuration list for PBXNativeTarget "roundsCollection" */;
 			buildPhases = (
+				6AF0E938A669D9F8DE54A293 /* 📦 Check Pods Manifest.lock */,
 				AC703F4A1D1C106800DFEBB3 /* Sources */,
 				AC703F4B1D1C106800DFEBB3 /* Frameworks */,
 				AC703F4C1D1C106800DFEBB3 /* Resources */,
+				E72DCF01FB5B795E9AE3256E /* 📦 Embed Pods Frameworks */,
+				0F5EBFC12EF9C2B1FBA10E17 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,13 +242,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F5EBFC12EF9C2B1FBA10E17 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-roundsCollection/Pods-roundsCollection-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6AF0E938A669D9F8DE54A293 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E72DCF01FB5B795E9AE3256E /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-roundsCollection/Pods-roundsCollection-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AC703F4A1D1C106800DFEBB3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				AC703F591D1C106800DFEBB3 /* ViewController.m in Sources */,
+				AC1DD2961D1CCE2F007AE636 /* HHImageModel.m in Sources */,
 				AC703F6E1D1C121500DFEBB3 /* HHCollectionCell.m in Sources */,
+				AC1DD2601D1CCAC0007AE636 /* HHNetTools.m in Sources */,
+				AC1DD2461D1CC05A007AE636 /* HHCollectionViewController.m in Sources */,
 				AC703F701D1C121500DFEBB3 /* HHCollectionView.m in Sources */,
 				AC703F561D1C106800DFEBB3 /* AppDelegate.m in Sources */,
 				AC703F531D1C106800DFEBB3 /* main.m in Sources */,
@@ -284,6 +410,7 @@
 		};
 		AC703F661D1C106800DFEBB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4787E5F171D5276930A4D09D /* Pods-roundsCollection.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = roundsCollection/Info.plist;
@@ -295,6 +422,7 @@
 		};
 		AC703F671D1C106800DFEBB3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88F9063E6F82B8287A743196 /* Pods-roundsCollection.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = roundsCollection/Info.plist;
@@ -323,6 +451,7 @@
 				AC703F671D1C106800DFEBB3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

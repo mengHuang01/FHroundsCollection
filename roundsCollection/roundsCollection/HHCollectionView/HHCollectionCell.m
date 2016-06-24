@@ -8,6 +8,8 @@
 
 #import "HHCollectionCell.h"
 
+#import <UIImageView+WebCache.h>
+
 @interface HHCollectionCell ()
 
 
@@ -21,7 +23,15 @@
 {
     _img = img;
     
-    self.imgView.image = [UIImage imageNamed:img];
+    
+    if (self.dataTapy) {
+        [self.imgView sd_setImageWithURL:[NSURL URLWithString:img]];
+    }else
+    {
+        self.imgView.image = [UIImage imageNamed:img];
+        
+    }
+    
 }
 
 - (void)awakeFromNib {
