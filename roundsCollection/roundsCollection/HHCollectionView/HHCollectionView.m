@@ -156,7 +156,6 @@
 {
     NSInteger sizeOf = scrollView.contentOffset.x / scrollView.bounds.size.width  - 1;
     
-//    NSLog(@"%ld", sizeOf);
     if (sizeOf == 0) {
         return;
     }
@@ -180,22 +179,25 @@
 {
     _images = images;
     
-    [self setCollectionUI];
     
-    [self fistTiem];
+    [self setCollectionUI];
 
     
     [self starTimer];
     
+    
+    self.pageControl.numberOfPages = _images.count;
+    
     [self.collectionView reloadData];
-
+    
+    [self fistTiem];
+    
+    
     
 }
 
 - (void)setCollectionUI
 {
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
     self.collectionView.pagingEnabled = YES;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.bounces = NO;
@@ -205,11 +207,13 @@
     self.flowLayout.minimumLineSpacing = 0;
     self.flowLayout.minimumInteritemSpacing = 0;
     
-    self.pageControl.numberOfPages = self.images.count;
     self.pageControl.multipleTouchEnabled = NO;
     self.pageControl.pageIndicatorTintColor = [UIColor redColor];
     self.pageControl.currentPageIndicatorTintColor = [UIColor blueColor];
     
+    
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
 
     
 }
@@ -242,6 +246,32 @@
         [_collectionView registerNib:[UINib nibWithNibName:@"HHCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"cell"];
         
         
+        
+        self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        
+        NSArray *collectH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(num)-[view]-(num)-|" options:NSLayoutFormatAlignmentMask metrics:@{@"num":@0} views:@{@"view":self.collectionView}];
+        
+        NSArray *collectV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(num)-[view]-(num)-|" options:(NSLayoutFormatAlignmentMask) metrics:@{@"num":@0} views:@{@"view":self.collectionView}];
+        
+        
+        
+        [self addConstraints:collectH];
+        [self addConstraints:collectV];
+        
+        
+        self.pageControl.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        NSArray *pageH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(num)-[view]-(num)-|" options:NSLayoutFormatAlignmentMask metrics:@{@"num":@0} views:@{@"view":self.pageControl}];
+        
+        NSArray *pageV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(30)]-(num)-|" options:NSLayoutFormatAlignmentMask metrics:@{@"num":@20} views:@{@"view":self.pageControl}];
+        
+        [self addConstraints:pageH];
+        [self addConstraints:pageV];
+        
+        
+        
+
     }
     return self;
 }
@@ -255,31 +285,12 @@
 {
     [super layoutSubviews];
     
-//    self.collectionView.frame = self.bounds;
-    
-    self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-#warning  报警告"negative or zero item sizes are not supported in the flow layout" 待解决
-    NSArray *collectH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(num)-[view]-(num)-|" options:NSLayoutFormatAlignmentMask metrics:@{@"num":@0} views:@{@"view":self.collectionView}];
-    
-    NSArray *collectV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(num)-[view]-(num)-|" options:(NSLayoutFormatAlignmentMask) metrics:@{@"num":@0} views:@{@"view":self.collectionView}];
-    
-    
-    
-    [self addConstraints:collectH];
-    [self addConstraints:collectV];
-    
-    
-    self.pageControl.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    NSArray *pageH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(num)-[view]-(num)-|" options:NSLayoutFormatAlignmentMask metrics:@{@"num":@0} views:@{@"view":self.pageControl}];
-    
-    NSArray *pageV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(30)]-(num)-|" options:NSLayoutFormatAlignmentMask metrics:@{@"num":@20} views:@{@"view":self.pageControl}];
-    
-    [self addConstraints:pageH];
-    [self addConstraints:pageV];
-    
     self.flowLayout.itemSize = self.collectionView.bounds.size;
+    
+    if (self.images.count) {
+        [self fistTiem];
+
+    }
 
     
 }

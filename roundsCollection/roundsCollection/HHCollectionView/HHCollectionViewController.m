@@ -12,6 +12,8 @@
 
 @interface HHCollectionViewController ()
 
+@property (nonatomic, strong) HHCollectionView *collectionView;
+
 @end
 
 @implementation HHCollectionViewController
@@ -38,13 +40,13 @@
         
         [HHImageModel imageWith:^(NSArray *imageArray) {
             
-           
+            collectionView.dataTapy = self.netFlag;
+
             NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:imageArray.count];
             
             for (HHImageModel *model in imageArray) {
                 [tempArray addObject:model.imgsrc];
             }
-            collectionView.dataTapy = self.netFlag;
             collectionView.images = tempArray.copy;
             
             
@@ -72,10 +74,16 @@
     }
     
     
+    self.collectionView = collectionView;
+    
     
 }
 
 
+- (void)dealloc
+{
+    [self.collectionView stopTimer];
+}
 
 
 - (void)didReceiveMemoryWarning {
